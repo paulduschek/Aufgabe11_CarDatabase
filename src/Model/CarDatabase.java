@@ -1,6 +1,9 @@
 package Model;
 
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Paul Duschek
@@ -9,20 +12,42 @@ import java.util.HashMap;
 
 public class CarDatabase {
 
-    private HashMap<String, Vehicle> db = new HashMap();
+    protected HashMap<String, Vehicle> db = new HashMap();
 
-    public void addVehicle()
+    public CarDatabase()
     {
-        String ma = MagicGenerator.getRandomManufacturer();
-        Vehicle v = new Vehicle(MagicGenerator.getRandomColor(), MagicGenerator.getRandomName(), ma, MagicGenerator.getRandomModel(ma), MagicGenerator.getRandomLicencePlate());
-        db.put(v.getLicensePlate(), v);
+        MagicGenerator mg = new MagicGenerator();
+        for(int i = 0; i <= 1000; i++)
+        {
+            String ma = mg.getRandomManufacturer();
+            String lp = mg.getRandomLicencePlate();
+            Vehicle v = new Vehicle(mg.getRandomColor(), mg.getRandomName(), ma, mg.getRandomModel(ma), lp);
+            db.put(lp, v);
+            System.out.printf("created vehicle with license plate: %s %n",lp);
+        }
     }
 
-    public void initializeDB(){
-        System.out.println("Test1");
-        for (int i = 0; i <= 1000; i++) {
-            addVehicle();
-            System.out.println("Test2");
+    public ArrayList<Vehicle> search (String licensePlate, boolean exact)
+    {
+        if(exact == true)
+        {
+            ArrayList<Vehicle> al = new ArrayList<>();
+
+            if (db.get(licensePlate.toUpperCase()) != null)
+            {
+                al.add(db.get(licensePlate));
+                return al;
+            }
         }
+        else{
+            ArrayList<Vehicle> al = new ArrayList<>();
+
+            for (Map.Entry entry:db.entrySet()) {
+                if (entry.getKey().toString().toUpperCase().contains(licensePlate.toUpperCase()))
+                    al.add(db.get(entry.getKey()));
+            }
+            return al;
+        }
+        return null;
     }
 }
