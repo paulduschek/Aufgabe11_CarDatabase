@@ -11,18 +11,57 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Vehicle extends Application {
+public class Vehicle {
 
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 600, 400));
-        primaryStage.show();
+    //Variable Definitions
+    private String color;
+    private String owner;
+    private String manufacturer;
+    private String model;
+    private String licensePlate;
+
+    //Constructor
+    public Vehicle(String c, String o, String ma, String mo, String lP){
+        this.color = c;
+        this.owner = o;
+        this.manufacturer = ma;
+        this.model = mo;
+        this.licensePlate = lP;
     }
 
+    //getter and setter
+    public String getColor() {
+        return color;
+    }
+    public void setColor(String color) {
+        this.color = color;
+    }
 
-    public static void main(String[] args) {
-        launch(args);
+    public String getOwner() {
+        return owner;
+    }
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public String getModel() {
+        return model;
+    }
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getLicensePlate() {
+        return licensePlate;
+    }
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
     }
 }
