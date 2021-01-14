@@ -64,4 +64,31 @@ public class Vehicle {
     public void setLicensePlate(String licensePlate) {
         this.licensePlate = licensePlate;
     }
+
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Color:");
+        sb.append(color);
+        sb.append("");
+
+        sb.append("Owner:");
+        sb.append(owner);
+        sb.append("");
+
+        sb.append("Manufacturer:");
+        sb.append(manufacturer);
+        sb.append("");
+
+        sb.append("Model:");
+        sb.append(model);
+        sb.append("");
+
+        sb.append("licensePlate:");
+        sb.append(licensePlate);
+        sb.append("");
+
+        return sb.toString();
+    }
 }
