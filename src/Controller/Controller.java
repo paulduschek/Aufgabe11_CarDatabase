@@ -60,16 +60,22 @@ public class Controller implements Initializable {
         }
 }
     public void control_generalSearch(){
-        float begin = System.nanoTime();
-        resultArea.clear();
-        ArrayList<Vehicle> al = cdB.search(searchField.getText(), false);
-        for (Vehicle vehicle:al) {
-            resultArea.appendText(vehicle.toString());
-            resultArea.appendText("\n\n");
-        }
-        float end = System.nanoTime();
+        if(!searchField.getText().equals("")) {
+            float begin = System.nanoTime();
+            resultArea.clear();
+            ArrayList<Vehicle> al = cdB.search(searchField.getText(), false);
+            for (Vehicle vehicle : al) {
+                resultArea.appendText(vehicle.toString());
+                resultArea.appendText("\n\n");
+            }
+            float end = System.nanoTime();
 
-        System.out.printf("Search took: %g ms %n", ((end-begin)/1000000));
+            System.out.printf("Search took: %g ms %n", ((end - begin) / 1000000));
+        }
+        else
+        {
+            System.out.println("Please Enter a valid license plate");
+        }
     }
 
     public void control_exactSearch(){
