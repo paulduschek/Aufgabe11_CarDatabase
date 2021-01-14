@@ -51,7 +51,7 @@ public class Controller implements Initializable {
             control.setStage(stage);
 
             stage.setTitle("Aufgabe 11 - Duschek");
-            stage.setScene(new Scene(root, 600, 415));
+            stage.setScene(new Scene(root, 600, 400));
             stage.show();
         }
         catch (IOException ex) {
